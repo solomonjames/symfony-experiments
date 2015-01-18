@@ -4,6 +4,11 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.bundle.controller.helpers:
+        class: AppBundle\Controller\Helpers\Helper
+
+    app.bundle.controller.helper.flash:
+        class: AppBundle\Controller\Helpers\FlashHelper
+        arguments: [@session]
+        tags:
+            - { name: controller.helper, alias: flash }

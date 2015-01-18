@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
@@ -12,6 +11,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        var_dump($this->flash()->add('poop', 'i am pooping'));
         return new \Symfony\Component\HttpFoundation\Response('Hello');
     }
 }
