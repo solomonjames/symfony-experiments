@@ -10,11 +10,11 @@ class ControllerHelperPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('app.bundle.controller.helpers')) {
+        if (!$container->hasDefinition('app.bundle.controller.helper_bag')) {
             return;
         }
 
-        $helper = $container->getDefinition('app.bundle.controller.helpers');
+        $helper = $container->getDefinition('app.bundle.controller.helper_bag');
 
         $taggedHelpers = $container->findTaggedServiceIds('controller.helper');
 

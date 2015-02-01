@@ -6,7 +6,7 @@ class HelperBag
 {
     protected $helpers = [];
 
-    public function __get($name)
+    public function __call($name, $arguments)
     {
         if ($this->hasHelper($name)) {
             return $this->getHelper($name);

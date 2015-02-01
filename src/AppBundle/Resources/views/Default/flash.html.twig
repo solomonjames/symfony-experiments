@@ -1,0 +1,11 @@
+<h1>Flashes</h1>
+
+<ul>
+    {% for message in helper.flash.success %}
+    <li>Success: {{ message }}</li>
+    {% endfor %}
+
+    {% for message in helper.flash.danger %}
+    <li>Danger: {{ message }}</li>
+    {% endfor %}
+</ul>

@@ -11,10 +11,8 @@ class DefaultController extends Controller
      */
     public function flashAction()
     {
-        $this->flash()->add('poop', 'i am pooping')
-                      ->success('That was amazing')
-        ;
+        $this->flash()->success('That was amazing')->danger('ahh snap!');
 
-        return 'Hello';
+        return $this->render('AppBundle:Default:flash.html.twig');
     }
 }

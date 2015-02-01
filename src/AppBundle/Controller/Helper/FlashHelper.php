@@ -18,23 +18,33 @@ class FlashHelper
         return $this;
     }
 
-    public function success($message)
+    public function success($message = null)
     {
-        return $this->add('success', $message);
+        return $this->handle('success', $message);
     }
 
-    public function info($message)
+    public function info($message = null)
     {
-        return $this->add('info', $message);
+        return $this->handle('info', $message);
     }
 
-    public function warning($message)
+    public function warning($message = null)
     {
-        return $this->add('warning', $message);
+        return $this->handle('warning', $message);
     }
 
-    public function danger($message)
+    public function danger($message = null)
     {
-        return $this->add('danger', $message);
+        return $this->handle('danger', $message);
+    }
+
+    protected function handle($type, $message = null)
+    {
+        // If there is no message, then execute as a getter
+        if (null === $message) {
+            return $this->session->getFlashBag()->get($type);
+        } else {
+            return $this->add($type, $message);
+        }
     }
 }
