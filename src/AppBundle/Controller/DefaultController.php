@@ -7,11 +7,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/flash", name="flash")
      */
-    public function indexAction()
+    public function flashAction()
     {
-        var_dump($this->flash()->add('poop', 'i am pooping'));
-        return new \Symfony\Component\HttpFoundation\Response('Hello');
+        $this->flash()->add('poop', 'i am pooping')
+                      ->success('That was amazing')
+        ;
+
+        return 'Hello';
     }
 }

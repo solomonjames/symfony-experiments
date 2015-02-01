@@ -8,7 +8,9 @@ class Controller extends BaseController
 {
     public function __call($name, $arguments)
     {
-        return $this->helper($name);
+        if ($this->get('app.bundle.controller.helper_bag')->hasHelper($name)) {
+            return $this->helper($name);
+        }
     }
 
     protected function parameter($name)
@@ -23,6 +25,6 @@ class Controller extends BaseController
 
     protected function helper($name)
     {
-        return $this->get('app.bundle.controller.helpers')->getHelper($name);
+        return $this->get('app.bundle.controller.helper_bag')->getHelper($name);
     }
 }
