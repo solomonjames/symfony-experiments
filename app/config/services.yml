@@ -1,29 +1,2 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
-parameters:
-    app.bundle.controller.helper_bag.class:   AppBundle\Controller\Helper\HelperBag
-    app.bundle.controller.helper.flash.class: AppBundle\Controller\Helper\FlashHelper
-    app.bundle.twig.extension.helpers.class:  AppBundle\Twig\Extension\HelperExtension
-
-services:
-    app.bundle.controller.helper_bag:
-        class: %app.bundle.controller.helper_bag.class%
-
-    app.bundle.controller.helper.flash:
-        class: %app.bundle.controller.helper.flash.class%
-        arguments: [@session]
-        tags:
-            - { name: controller.helper, alias: flash }
-
-    app.bundle.helper.flash:
-        class: %app.bundle.controller.helper.flash.class%
-        arguments: [@session]
-        tags:
-            - { name: helper.controller, alias: flash }
-            - { name: helper.view, alias: flash }
-
-    app.bundle.twig.extension.helpers:
-        class: %app.bundle.twig.extension.helpers.class%
-        arguments: [@app.bundle.controller.helper_bag]
-        tags:
-            - { name: twig.extension }

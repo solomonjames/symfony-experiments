@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Helper;
+namespace AppBundle\Helper;
 
 class FlashHelper
 {

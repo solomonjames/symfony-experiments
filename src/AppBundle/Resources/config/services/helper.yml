@@ -1,0 +1,22 @@
+parameters:
+    app.bundle.helper_bag.class:             AppBundle\Helper\HelperBag
+    app.bundle.helper.flash.class:           AppBundle\Helper\FlashHelper
+    app.bundle.twig.extension.helper.class:  AppBundle\Twig\Extension\HelperExtension
+
+services:
+    app.bundle.helper.helper_bag:
+        class: %app.bundle.helper_bag.class%
+        public: false
+
+    app.bundle.helper.flash:
+        class: %app.bundle.helper.flash.class%
+        arguments: [@session]
+        tags:
+            - { name: helper.controller, alias: flash }
+            - { name: helper.view, alias: flash }
+
+    app.bundle.twig.extension.helpers:
+        class: %app.bundle.twig.extension.helper.class%
+        tags:
+            - { name: twig.extension }
+

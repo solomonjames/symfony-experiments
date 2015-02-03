@@ -4,10 +4,12 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
+
 /**
  * @Route("/forms")
  */
-class FormsController extends Controller
+class FormsController extends BaseController
 {
     /**
      * @Route("", name="forms.home")

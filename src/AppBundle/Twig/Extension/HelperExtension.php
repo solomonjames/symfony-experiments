@@ -2,7 +2,7 @@
 
 namespace AppBundle\Twig\Extension;
 
-use AppBundle\Controller\Helper\HelperBag;
+use AppBundle\Helper\HelperBag;
 
 class HelperExtension extends \Twig_Extension
 {
