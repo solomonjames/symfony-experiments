@@ -15,6 +15,13 @@ services:
         tags:
             - { name: controller.helper, alias: flash }
 
+    app.bundle.helper.flash:
+        class: %app.bundle.controller.helper.flash.class%
+        arguments: [@session]
+        tags:
+            - { name: helper.controller, alias: flash }
+            - { name: helper.view, alias: flash }
+
     app.bundle.twig.extension.helpers:
         class: %app.bundle.twig.extension.helpers.class%
         arguments: [@app.bundle.controller.helper_bag]
