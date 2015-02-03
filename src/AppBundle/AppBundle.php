@@ -13,6 +13,6 @@ class AppBundle extends Bundle
     {
         parent::build($container);
 
-        $container->addCompilerPass(new Compiler\ControllerHelperPass());
+        $container->addCompilerPass(new Compiler\HelperPass());
     }
 }
