@@ -1,10 +1,15 @@
+# Define only helpers or helper related services here
+
 parameters:
+
     app.bundle.helper_bag.class:             AppBundle\Helper\HelperBag
-    app.bundle.twig.extension.helper.class:  AppBundle\Twig\Extension\HelperExtension
     app.bundle.helper.flash.class:           AppBundle\Helper\FlashHelper
     app.bundle.helper.user.class:            AppBundle\Helper\UserHelper
+    app.bundle.twig.extension.helper.class:  AppBundle\Twig\Extension\HelperExtension
 
 services:
+
+    # This is the template for making controller and view helper bags
     app.bundle.helper.helper_bag:
         class: %app.bundle.helper_bag.class%
         public: false

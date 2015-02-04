@@ -2,20 +2,15 @@
 
 namespace AppBundle\Helper;
 
+use AppBundle\Security\UserAware\UserAwareTrait;
+
 class UserHelper implements HelperInterface
 {
-    private $user;
+    use UserAwareTrait;
 
     public function username()
     {
-        return $this->user->getUsername();
-    }
-
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
+        return $this->getUser()->getUsername();
     }
 
     public function getName()

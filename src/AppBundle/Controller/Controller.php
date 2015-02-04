@@ -8,6 +8,7 @@ class Controller extends BaseController
 {
     public function __call($name, $arguments)
     {
+        // This provides a seamless way to use controller helpers
         if ($this->get('app.bundle.helper.controller.helper_bag')->hasHelper($name)) {
             return $this->helper($name);
         }

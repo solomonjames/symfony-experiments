@@ -4,6 +4,12 @@ namespace AppBundle\Configurator;
 
 use Symfony\Component\Security\Core\SecurityContext;
 
+/**
+ * Responsible for injecting just the actual user object into a service.
+ *
+ * This makes it easier to deal with getting the user object, and not
+ *     having to deal with the security context all the time.
+ */
 class UserConfigurator
 {
     private $securityContext;
@@ -13,9 +19,11 @@ class UserConfigurator
         $this->securityContext = $securityContext;
     }
 
-    public function configure($someClass)
+    public function configure($userDependentClass)
     {
-        $someClass->setUser($this->getUser());
+        if (is_callable(array($userDependentClass, 'setUser')) && null !== $this->getUser()) {
+            $userDependentClass->setUser($this->getUser());
+        }
 
         return $this;
     }
