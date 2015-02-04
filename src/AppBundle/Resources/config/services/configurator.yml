@@ -1,0 +1,9 @@
+parameters:
+
+    app.bundle.config.user.class: AppBundle\Configurator\UserConfigurator
+
+services:
+
+    app.bundle.config.user:
+        class: %app.bundle.config.user.class%
+        arguments: [@security.context]

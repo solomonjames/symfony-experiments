@@ -1,7 +1,8 @@
 parameters:
     app.bundle.helper_bag.class:             AppBundle\Helper\HelperBag
-    app.bundle.helper.flash.class:           AppBundle\Helper\FlashHelper
     app.bundle.twig.extension.helper.class:  AppBundle\Twig\Extension\HelperExtension
+    app.bundle.helper.flash.class:           AppBundle\Helper\FlashHelper
+    app.bundle.helper.user.class:            AppBundle\Helper\UserHelper
 
 services:
     app.bundle.helper.helper_bag:
@@ -14,6 +15,13 @@ services:
         tags:
             - { name: helper.controller, alias: flash }
             - { name: helper.view, alias: flash }
+
+    app.bundle.helper.user:
+        class: %app.bundle.helper.user.class%
+        configurator: [@app.bundle.config.user, configure]
+        tags:
+            - { name: helper.controller }
+            - { name: helper.view }
 
     app.bundle.twig.extension.helpers:
         class: %app.bundle.twig.extension.helper.class%
